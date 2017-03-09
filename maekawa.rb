@@ -1,8 +1,8 @@
 class Maekawa < Formula
   desc "client for AWS CloudWatch Events has idempotence."
   homepage "https://github.com/unasuke/maekawa"
-  url "https://github.com/unasuke/maekawa/archive/v0.2.0.tar.gz"
-  sha256 "a120b995c4b695da2369850953e28ab4cd120e3b3ccb72c7028eee660eb70a95"
+  url "https://github.com/unasuke/maekawa/archive/v0.3.0.tar.gz"
+  sha256 "7057df1650f044666ad5073a519489ac3aaa2dd2ed7d2a62aca75add7fe1a54e"
 
   depends_on "go" => :build
   depends_on "glide" => :build
