@@ -1,24 +1,18 @@
 class Maekawa < Formula
+  MAEKAWA_VERSION = '0.5.1'
   desc "client for AWS CloudWatch Events has idempotence."
   homepage "https://github.com/unasuke/maekawa"
-  url "https://github.com/unasuke/maekawa/archive/v0.5.1.tar.gz"
-  sha256 "2aa6be2d2dd1f50249a678c1edaf29278227f35104154e4e2ec589bc0b1364c3"
+  url "https://github.com/unasuke/maekawa/releases/download/v#{MAEKAWA_VERSION}/maekawa_darwin_amd64"
+  sha256 "659ff153e8ac2c7cf6ebdd883b95931d48067572df044a7973ea1e095fd13a87"
+  version MAEKAWA_VERSION
 
-  depends_on "go" => :build
-  depends_on "glide" => :build
 
   def install
-    ENV["GOPATH"] = buildpath
-    ENV["GLIDE_HOME"] = HOMEBREW_CACHE/"glide_home/#{name}"
-    (buildpath/"src/github.com/unasuke/maekawa").install buildpath.children
-    cd "src/github.com/unasuke/maekawa" do
-      system "glide", "install"
-      system "go", "build", "-o", "maekawa"
-      bin.install "maekawa"
-    end
+    system "mv", "maekawa_darwin_amd64", "maekawa"
+    bin.install "maekawa"
   end
 
   test do
-    # system "go" "test"
+    system "maekawa", "--version"
   end
 end
